@@ -30,6 +30,7 @@ public class DemoqaTest {
         $(".react-datepicker__month-select").selectOption("September");
         $(".react-datepicker__year-select").selectOption("1997");
         $(by("aria-label", "Choose Thursday, September 25th, 1997")).click();
+        $(by("for", "hobbies-checkbox-1")).click();
         $("[id=subjectsInput]").setValue("History").pressEnter();
         $("#uploadPicture").uploadFromClasspath("1.png");
         $("[id=currentAddress]").setValue("Ufa,Ayskaya 16");
@@ -48,5 +49,6 @@ public class DemoqaTest {
         $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("History"));
         $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("1.png"));
         $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("Haryana Karnal"));
+        $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("Sports"));
     }
 }
