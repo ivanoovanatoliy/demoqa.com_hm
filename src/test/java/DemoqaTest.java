@@ -11,13 +11,14 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class DemoqaTest {
     @BeforeAll
-    static void DemoqaTests() {
+    static void setupConfig() {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
         Configuration.baseUrl = "https://demoqa.com";
     }
-        @Test
-        void DemoqaTestForm() {
+
+    @Test
+    void succesfullFillRegistrationForm() {
         open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
