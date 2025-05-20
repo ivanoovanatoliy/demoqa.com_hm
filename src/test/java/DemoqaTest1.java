@@ -31,7 +31,7 @@ public class DemoqaTest1 {
         $(by("aria-label", "Choose Thursday, September 25th, 1997")).click();
         $(by("for", "hobbies-checkbox-1")).click();
         $("[id=subjectsInput]").setValue("History").pressEnter();
-        $("#uploadPicture").uploadFromClasspath("1.png");
+        $("#uploadPicture").uploadFromClasspath("1.jpg");
         $("[id=currentAddress]").setValue("Ufa,Ayskaya 16");
         $("[id=state]").click();
         $("[id=react-select-3-input]").setValue("Haryana").pressEnter();
@@ -46,7 +46,7 @@ public class DemoqaTest1 {
         $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("History"));
         $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("Ufa,Ayskaya 16"));
         $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("History"));
-        $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("1.png"));
+        $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("1.jpg"));
         $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("Haryana Karnal"));
         $(".table.table-dark.table-striped.table-bordered.table-hover").shouldHave(text("Sports"));
     }
