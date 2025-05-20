@@ -15,101 +15,74 @@ public class PracticeFormWithFakerTests extends TestBase {
     StudentDataFactory studentDataFactory = new StudentDataFactory();
     FakePersonMethods fakePerson = new FakePersonMethods();
 
-
     @Test
     void fillPracticeFormTest() {
         StudentData student = studentDataFactory.generateStudentModelFull();
-        step("Open form", () -> {
-            practiceFormPage.openPage();
-        });
-        step("Remove banners", () -> {
-            practiceFormPage.removeBanners();
-        });
-        step("Fill form", () -> {
-            practiceFormPage.setFirstName(student.getFirstName())
-                    .setLastName(student.getLastName())
-                    .setUserEmail(student.getEmail())
-                    .setGender(student.getGender())
-                    .setPhoneNumber(student.getPhoneNumber())
-                    .setSubjects(student.getSubject())
-                    .setHobbies(student.getHobbies())
-                    .uploadFile(student.getFileName())
-                    .setCurrentAddress(student.getAddress())
-                    .setState(student.getState())
-                    .setCity(student.getCity());
 
-            calendarComponent.setDate(student.getDay(), student.getMonth(), student.getYear());
-        });
-        step("Click submit", () -> {
-            practiceFormPage.clickSubmit();
-        });
+        practiceFormPage.openPage();
+        practiceFormPage.removeBanners();
 
-        step("Check result", () -> {
-            tableResponseComponent.checkResult(student.getFirstName())
-                    .checkResult(student.getLastName())
-                    .checkResult(student.getEmail())
-                    .checkResult(student.getGender())
-                    .checkResult(student.getPhoneNumber())
-                    .checkResult(student.getDay())
-                    .checkResult(student.getMonth())
-                    .checkResult(student.getYear())
-                    .checkResult(student.getSubject())
-                    .checkResult(student.getHobbies())
-                    .checkResult(student.getFileName())
-                    .checkResult(student.getAddress())
-                    .checkResult(student.getState())
-                    .checkResult(student.getCity());
+        practiceFormPage.setFirstName(student.getFirstName())
+                .setLastName(student.getLastName())
+                .setUserEmail(student.getEmail())
+                .setGender(student.getGender())
+                .setPhoneNumber(student.getPhoneNumber())
+                .setSubjects(student.getSubject())
+                .setHobbies(student.getHobbies())
+                .uploadFile(student.getFileName())
+                .setCurrentAddress(student.getAddress())
+                .setState(student.getState())
+                .setCity(student.getCity());
 
-        });
+        calendarComponent.setDate(student.getDay(), student.getMonth(), student.getYear());
+        practiceFormPage.clickSubmit();
+
+        tableResponseComponent.checkResult(student.getFirstName())
+                .checkResult(student.getLastName())
+                .checkResult(student.getEmail())
+                .checkResult(student.getGender())
+                .checkResult(student.getPhoneNumber())
+                .checkResult(student.getDay())
+                .checkResult(student.getMonth())
+                .checkResult(student.getYear())
+                .checkResult(student.getSubject())
+                .checkResult(student.getHobbies())
+                .checkResult(student.getFileName())
+                .checkResult(student.getAddress())
+                .checkResult(student.getState())
+                .checkResult(student.getCity());
     }
 
     @Test
     void fillPracticeMandatoryFormTest() {
-        StudentData studentMandatoru = studentDataFactory.generateStudentModelMandatory();
-        step("Open form", () -> {
-            practiceFormPage.openPage();
-        });
-        step("Remove banners", () -> {
-            practiceFormPage.removeBanners();
-        });
-        step("Fill form", () -> {
-            practiceFormPage.setFirstName(studentMandatoru.getFirstName())
-                    .setLastName(studentMandatoru.getLastName())
-                    .setGender(studentMandatoru.getGender())
-                    .setPhoneNumber(studentMandatoru.getPhoneNumber());
-            calendarComponent.setDate(studentMandatoru.getDay(), studentMandatoru.getMonth(), studentMandatoru.getYear());
-        });
-        step("Click submit", () -> {
-            practiceFormPage.clickSubmit();
-        });
-        step("Check result", () -> {
-            tableResponseComponent.checkResult(studentMandatoru.getFirstName())
-                    .checkResult(studentMandatoru.getLastName())
-                    .checkResult(studentMandatoru.getGender())
-                    .checkResult(studentMandatoru.getPhoneNumber())
-                    .checkResult(studentMandatoru.getDay())
-                    .checkResult(studentMandatoru.getMonth())
-                    .checkResult(studentMandatoru.getYear());
-        });
+        StudentData studentMandatory = studentDataFactory.generateStudentModelMandatory();
+
+        practiceFormPage.openPage();
+        practiceFormPage.removeBanners();
+
+        practiceFormPage.setFirstName(studentMandatory.getFirstName())
+                .setLastName(studentMandatory.getLastName())
+                .setGender(studentMandatory.getGender())
+                .setPhoneNumber(studentMandatory.getPhoneNumber());
+
+        calendarComponent.setDate(studentMandatory.getDay(), studentMandatory.getMonth(), studentMandatory.getYear());
+        practiceFormPage.clickSubmit();
+
+        tableResponseComponent.checkResult(studentMandatory.getFirstName())
+                .checkResult(studentMandatory.getLastName())
+                .checkResult(studentMandatory.getGender())
+                .checkResult(studentMandatory.getPhoneNumber())
+                .checkResult(studentMandatory.getDay())
+                .checkResult(studentMandatory.getMonth())
+                .checkResult(studentMandatory.getYear());
     }
 
     @Test
     void fillPracticeFormNegativeTest() {
-        step("Open form", () -> {
-            practiceFormPage.openPage();
-        });
-        step("Remove banners", () -> {
-            practiceFormPage.removeBanners();
-        });
-        step("Fill form", () -> {
-            practiceFormPage.setFirstName(fakePerson.getFirstName());
-        });
-        step("Click submit", () -> {
-            practiceFormPage.clickSubmit();
-        });
-        step("Check result", () -> {
-            practiceFormPage.modalWithResultNotExist();
-        });
+        practiceFormPage.openPage();
+        practiceFormPage.removeBanners();
+        practiceFormPage.setFirstName(fakePerson.getFirstName());
+        practiceFormPage.clickSubmit();
+        practiceFormPage.modalWithResultNotExist();
     }
-
 }
